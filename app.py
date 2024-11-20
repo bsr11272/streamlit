@@ -10,6 +10,19 @@ st.set_page_config(
     layout="wide"
 )
 
+# Hide deployment information
+st.markdown("""
+    <style>
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        header {visibility: hidden;}
+        .stDeployButton {display: none;}
+        .viewerBadge_container__1QSob {display: none;}
+        .viewerBadge_link__1QSob {display: none;}
+        .viewerBadge_text__1QSob {display: none;}
+    </style>
+""", unsafe_allow_html=True)
+
 # Create sample data
 def generate_sample_data():
     dates = pd.date_range(start='2023-01-01', end='2023-12-31', freq='M')
