@@ -14,16 +14,38 @@ st.set_page_config(layout="wide")
 
 @st.cache_data
 def load_data():
-    # Read the zip file
-    with zipfile.ZipFile('data/WFHdata_October24.zip', 'r') as zip_ref:
-        # Assuming the CSV file name inside the zip is 'WFHdata_October24.csv'
-        with zip_ref.open('WFHdata_October24.csv') as csv_file:
-            # Read the CSV from the zip file
-            df = pd.read_csv(csv_file, low_memory=False)
-    
-    # Convert date string to datetime
-    df["date_proper"] = pd.to_datetime(df["date"].str.replace("m", "-"), format="%Y-%m")
-    return df
+    try:
+        # Get the directory where app.py is located
+        current_dir = Path(__file__).parent
+        
+        # Construct path to the zip file
+        zip_path = current_dir / "data" / "WFHdata_October24.zip"
+        
+        st.write(f"Attempting to read from: {zip_path}")  # Debug info
+        
+        # Check if file exists
+        if not zip_path.exists():
+            st.error(f"Zip file not found at {zip_path}")
+            return None
+
+        # Read the zip file
+        with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+            # List all files in zip for debugging
+            st.write(f"Files in zip: {zip_ref.namelist()}")  # Debug info
+            
+            # Get the CSV filename (assuming it's the only or first CSV)
+            csv_name = next(name for name in zip_ref.namelist() if name.endswith('.csv'))
+            
+            with zip_ref.open(csv_name) as csv_file:
+                df = pd.read_csv(csv_file, low_memory=False)
+                
+                # Convert date string to datetime
+                df["date_proper"] = pd.to_datetime(df["date"].str.replace("m", "-"), format="%Y-%m")
+                return df
+
+    except Exception as e:
+        st.error(f"Error loading data: {str(e)}")
+        return None
 
 df = load_data()
 
