@@ -22,7 +22,7 @@ def load_data():
         # Construct path to the zip file
         zip_path = current_dir / "data" / "WFHdata_October24_minimal.zip"
         
-        st.write(f"Attempting to read from: {zip_path}")  # Debug info
+        # st.write(f"Attempting to read from: {zip_path}")  # Debug info
         
         # Check if file exists
         if not zip_path.exists():
@@ -32,7 +32,7 @@ def load_data():
         # Read the zip file
         with zipfile.ZipFile(zip_path, 'r') as zip_ref:
             # List all files in zip for debugging
-            st.write(f"Files in zip: {zip_ref.namelist()}")  # Debug info
+            # st.write(f"Files in zip: {zip_ref.namelist()}")  # Debug info
             
             # Get the CSV filename (assuming it's the only or first CSV)
             csv_name = next(name for name in zip_ref.namelist() if name.endswith('.csv'))
