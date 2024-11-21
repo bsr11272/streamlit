@@ -20,7 +20,7 @@ def load_data():
         current_dir = Path(__file__).parent
         
         # Construct path to the zip file
-        zip_path = current_dir / "data" / "WFHdata_October24.zip"
+        zip_path = current_dir / "data" / "WFHdata_October24_minimal.zip"
         
         st.write(f"Attempting to read from: {zip_path}")  # Debug info
         
