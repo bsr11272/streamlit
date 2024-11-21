@@ -60,7 +60,7 @@ def show_chart(df):
         },
         showlegend=True,
         width=1000,
-        height=1000,
+        height=800,
         margin=dict(l=50, r=50, t=80, b=120),  # Increased bottom margin for rotated labels
     )
 
