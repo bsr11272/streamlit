@@ -11,7 +11,7 @@ from chart_functions import (desired_wfh_days,
                              )
 
 # Set wide layout at the start
-st.set_page_config(layout="wide")
+
 
 @st.cache_data
 def load_data():
