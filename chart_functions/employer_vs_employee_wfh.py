@@ -16,7 +16,7 @@ def show_chart(df):
         y="counts",
         color="wfh_days_postCOVID_boss_ss",
         barmode="group",
-        title="Work From Home Days: Alignment Between Employers and Employees",
+        title="Work From Home: Alignment Between Employers and Employees",
         labels={
             "wfh_days_postCOVID_ss": "Employee Desired WFH Days",
             "counts": "Number of Respondents",

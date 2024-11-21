@@ -63,7 +63,7 @@ def show_chart(df):
         griddash='dash',
         title_font=dict(size=14),
         tickfont=dict(size=12),
-        tickformat='.1%'  # Format as percentage
+        # tickformat='.1%'  # Format as percentage
     )
 
     # Enhance x-axis
